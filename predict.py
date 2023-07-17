@@ -107,6 +107,8 @@ def show_predict_page():
                 time.sleep(0.1)
                 my_bar.progress(percent_complete + 1, text=progress_text)
 
+            
+            st.success("Prediction Completed")
 
             # Display Results
             st.write(X)
