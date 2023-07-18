@@ -11,9 +11,10 @@ def load_data():
 
 def show_explore_page():
     st.title("This Page Displays Information About the Dataset")
-    #st.write("""## COMING SOON!!""")
-    #st.write("""### On this page we'll explore the dataset used to train our machine learning models""")
+    st.write("""## COMING SOON!!""")
+    st.write("""### On this page we'll explore the dataset used to train our machine learning models""")
 
+    """
     data = load_data()
 
     st.write("""#### Top five rows of the diabetes Dataset""")
@@ -49,6 +50,7 @@ def show_explore_page():
 
     st.write("""#### Percentage of Gender""")
     st.pyplot(fig2)
+    """
 
 
 
