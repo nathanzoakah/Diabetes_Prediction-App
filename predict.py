@@ -3,8 +3,6 @@ import pickle
 import numpy as np
 import time
 import sklearn
-#from sklearn.preprocessing import StandardScaler
-
 
 
 def load_first_model():
@@ -36,7 +34,7 @@ def show_predict_page():
 
     with st.form(key="form", clear_on_submit=True):
 
-        Age = st.number_input("Age", max_value=85, min_value=10)
+        Age = st.number_input("Age", max_value= 85 , min_value=10)
         
         gender = st.text_input("Gender", placeholder="M or F", max_chars=1)
         gender = gender.lower()
@@ -53,11 +51,11 @@ def show_predict_page():
         
         # Variables
 
-        Fgp = st.number_input("Fasting Plasma Glucose (mg/dl)")
-        Dbp = st.number_input("Diastolic Blood Pressure (mm Hg)")
-        Sbp = st.number_input("Systolic Blood Pressure (mm Hg)")
-        Weight = st.number_input("Weight (Kilogram)")
-        Height = st.number_input("height (Meters)")
+        Fgp = st.number_input("Fasting Plasma Glucose (mg/dl)", max_value=495, min_value=59)
+        Dbp = st.number_input("Diastolic Blood Pressure (mm Hg)", max_value=217, min_value=89)
+        Sbp = st.number_input("Systolic Blood Pressure (mm Hg)", max_value=248, min_value=26)
+        Weight = st.number_input("Weight (Kilogram)", max_value=124, min_value=28)
+        Height = st.number_input("height (Meters)", max_value=1.996, min_value=1.30)
 
 
         # Derived Variables
@@ -74,8 +72,8 @@ def show_predict_page():
 
         
         # Other Variables
-        Wc = st.number_input("Waist Circumference (Centimeters)")
-        Hc = st.number_input("Hip Circumference (Centimeters)")
+        Wc = st.number_input("Waist Circumference (Centimeters)" , max_value=156, min_value=21)
+        Hc = st.number_input("Hip Circumference (Centimeters)", max_value=143, min_value=61)
 
 
         # Derived Variables
@@ -93,9 +91,6 @@ def show_predict_page():
         if submit:
             X = np.array([[Age, Gender_F, Gender_M, Fgp, Sbp, Dbp, Weight, Height, H_sqrd, Bmi, Wc, Hc, Whr]])
 
-            # Scale Feature Data
-            #scaler = StandardScaler()
-            #X_scaled = scaler.fit_transform(X)
             first_prediction = trained_first_model.predict(X)
             second_prediction =trained_second_model.predict(X)
 
@@ -107,8 +102,8 @@ def show_predict_page():
                 time.sleep(0.1)
                 my_bar.progress(percent_complete + 1, text=progress_text)
 
-            
             st.success("Prediction Completed")
+            
 
             # Display Results
             st.write(X)
